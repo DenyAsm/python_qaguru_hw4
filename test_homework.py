@@ -105,6 +105,8 @@ def test_dicts():
     # TODO создайте словарь
     d = dict(zip(first, second))
 
+    #print(d)
+
     assert isinstance(d, dict)
     assert len(d) == 5
     assert list(d.keys()) == first
