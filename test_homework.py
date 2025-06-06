@@ -87,7 +87,7 @@ def test_unique_elements():
     # После чего преобразует множество обратно в список,
     # но при этом порядок элементов может измениться
     l = list(set(l))
-    print(l)
+    #print(l)
 
     assert isinstance(l, list)
     assert len(l) == 10
