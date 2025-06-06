@@ -1,4 +1,6 @@
-import math
+import math, random
+from random import randint
+
 
 def test_greeting():
     """
@@ -10,10 +12,13 @@ def test_greeting():
 
     #1 - Использование f-строк (удобно/читаемо/кратко)
     output = f"Привет, {name}! Тебе {age} лет."
+
     #2 - Конкатенация с помощью оператора +
     #output = "Привет, " + name + "! Тебе " + str(age) + " лет."
+
     #3 - Старый стиль %
     #output = "Привет, %s! Тебе %d лет." % (name, age)
+
     #4 - Использование метода .format()
     #output = "Привет, {}! Тебе {} лет.".format(name, age)
 
@@ -47,13 +52,11 @@ def test_circle():
     r = 23
     # TODO сосчитайте площадь
     area = math.pi*r**2
-    print(area)
 
     assert area == 1661.9025137490005
 
     # TODO сосчитайте длину окружности
     length = 2*math.pi*r
-    print(length)
 
     assert length == 144.51326206513048
 
@@ -63,7 +66,12 @@ def test_random_list():
     Создайте список из 10 случайных чисел от 1 до 100 (включая обе границы) и отсортируйте его по возрастанию.
     """
     # TODO создайте список
-    l = []
+
+    # создаем список из 10 случайных чисел
+    l = [random.randint(1, 100) for _ in range(10)]
+    l.sort()                                       # Сортирует список по возрастанию
+    #l.sort(reverse=True)                          # Сортирует список по убыванию
+    #print(l)
 
     assert len(l) == 10
     assert all(l[i] <= l[i + 1] for i in range(len(l) - 1))
@@ -75,6 +83,11 @@ def test_unique_elements():
     """
     l = [1, 2, 3, 4, 5, 5, 5, 6, 7, 8, 8, 9, 10, 10]
     # TODO удалите повторяющиеся элементы
+    # Удаляет дубликаты из списка, так как множество не содержит дубликатов.
+    # После чего преобразует множество обратно в список,
+    # но при этом порядок элементов может измениться
+    l = list(set(l))
+    print(l)
 
     assert isinstance(l, list)
     assert len(l) == 10
